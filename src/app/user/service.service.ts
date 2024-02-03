@@ -10,7 +10,7 @@ import { Observable, catchError, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ServiceService {
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://gravitas-ai-backend.onrender.com/api';
 
   constructor(private httpClient: HttpClient) {}
 

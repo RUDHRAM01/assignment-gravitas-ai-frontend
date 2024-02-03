@@ -1,11 +1,16 @@
 <div class="loginContainer">
-  <form action="">
+  <div class="alert alert-danger" role="alert" *ngIf="isError">
+    {{ errorMsg }}
+  </div>
+  <form [formGroup]="form" (ngSubmit)="login()">
     <h1>Login</h1>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
+    <input type="email" formControlName="email" id="email" required />
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" formControlName="password" id="password" required />
     <button type="submit">Login</button>
-    <a href="" [routerLink]="['/signup']" class="question">don't have an account?</a>
+    <a href="" [routerLink]="['/signup']" class="question"
+      >don't have an account?</a
+    >
   </form>
 </div>

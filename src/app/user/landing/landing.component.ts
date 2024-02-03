@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -9,5 +9,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-
+  constructor(private router: Router) {
+    if(localStorage.getItem('loginInfo')) {
+      this.router.navigateByUrl('/home');
+    }
+  }
 }

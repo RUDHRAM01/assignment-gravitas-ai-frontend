@@ -1,1 +1,184 @@
-<p>index works!</p>
+<div class="homeComponent">
+  <div class="nav">
+    <div>
+      <h1>Records</h1>
+    </div>
+    <div class="avatar">
+      <div class="btn-group">
+        <button
+          type="button"
+          class="dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: none;
+          "
+        >
+          <img
+            src="https://cdn.dribbble.com/users/2645532/screenshots/10865833/media/a8ce752ebaa96c73ee7b47ffab6069f2.jpg"
+            alt=""
+            class="avatarImg"
+          />
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <button class="dropdown-item" (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="recordComponent">
+    <div class="createRecord">
+      <button
+        class="btn btn-success"
+        id="createNewBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#createNewModal"
+      >
+        + Create New
+      </button>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of records">
+            <th scope="row">{{ record.id }}</th>
+            <td>{{ record.title }}</td>
+            <td>{{ record.description }}</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                id="updateModalBtn"
+                data-bs-toggle="modal"
+                data-bs-target="#updateModal"
+                (click)="setValue(record)"
+              >
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="deleteRecord(record.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div
+        class="modal fade"
+        id="createNewModal"
+        tabindex="-1"
+        aria-labelledby="createNewModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createNewModalLabel">
+                Create New Record
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="form" (ngSubmit)="create()">
+                <div class="mb-3">
+                  <label class="form-label">Title:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="title"
+                    id="actionInput"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Body:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="body"
+                    id="actionInput"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="updateModal"
+        tabindex="-1"
+        aria-labelledby="updateLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateLabel">Update Record</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="editForm">
+                <div class="mb-3">
+                  <label class="form-label">Title:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="title"
+                    id="actionInput"
+                    [(ngModel)]="editData.title"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Body:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="body"
+                    id="actionInput"
+                    [(ngModel)]="editData.body"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  (click)="updateRecord()"
+                  data-bs-dismiss="modal"
+                >
+                  Update
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

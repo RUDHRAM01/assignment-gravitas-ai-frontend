@@ -1,0 +1,67 @@
+.homeComponent{
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.homeComponent h1{
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(to right, #30CFD0, #330867);
+}
+
+.homeComponent > .nav{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.avatarImg{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.avatar{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  gap: 10px;
+  color: tomato;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+
+.createRecord{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #30CFD0, #330867);
+  cursor: pointer;
+}
+
+.recordComponent{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.createRecord button{
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: orange;
+  font-weight: 600;
+}

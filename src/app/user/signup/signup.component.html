@@ -1,11 +1,19 @@
 <div class="signupContainer">
-  <form action="">
+  <div class="alert alert-danger" role="alert" *ngIf="isError">
+    {{ errorMsg }}
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="isSuccess">
+    {{ successMsg }}
+  </div>
+  <form [formGroup]="form" (ngSubmit)="signUp()">
     <h1>Sing Up</h1>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
+    <input type="email" formControlName="email" id="email" required />
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
+    <input type="password" formControlName="password" id="password" required />
     <button type="submit">Sing Up</button>
-    <a href="" [routerLink]="['/login']" class="question">already have an account?</a>
+    <a href="" [routerLink]="['/login']" class="question"
+      >already have an account?</a
+    >
   </form>
 </div>

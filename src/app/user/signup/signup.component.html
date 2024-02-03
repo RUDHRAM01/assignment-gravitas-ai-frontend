@@ -6,12 +6,12 @@
     {{ successMsg }}
   </div>
   <form [formGroup]="form" (ngSubmit)="signUp()">
-    <h1>Sing Up</h1>
+    <h1>Sign Up</h1>
     <label for="email">Email</label>
     <input type="email" formControlName="email" id="email" required />
     <label for="password">Password</label>
     <input type="password" formControlName="password" id="password" required />
-    <button type="submit">Sing Up</button>
+    <button type="submit">Sign Up</button>
     <a href="" [routerLink]="['/login']" class="question"
       >already have an account?</a
     >

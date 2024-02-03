@@ -17,6 +17,7 @@ export class SignupComponent {
   errorMsg: string = '';
   isSuccess: boolean = false;
   successMsg: string = '';
+  loading: boolean = false;
   constructor(private router: Router, private apiService: ServiceService) {
     if (localStorage.getItem('loginInfo')) {
       this.router.navigateByUrl('/home');
@@ -31,15 +32,18 @@ export class SignupComponent {
    }
 
   signUp() {
+    this.loading = true;
     this.apiService.Register(this.form.value).subscribe((res) => {
       this.isSuccess = true;
       this.successMsg = res.msg;
       setTimeout(() => {
         this.isSuccess = false;
+        this.loading = false;
         this.router.navigateByUrl('/login');
       }, 2000);
     }, (error) => {
       this.isError = true;
+      this.loading = false;
       this.errorMsg = error.error.msg;
       setTimeout(() => {
         this.isError = false;

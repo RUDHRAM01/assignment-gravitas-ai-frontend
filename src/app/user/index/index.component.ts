@@ -26,7 +26,6 @@ export class IndexComponent {
     body: '',
   };
 
-
   constructor(private router: Router, private apiService: ServiceService) {
     if (!localStorage.getItem('loginInfo')) {
       this.router.navigateByUrl('/');
@@ -63,6 +62,7 @@ export class IndexComponent {
         this.records = res;
       });
     });
+
   }
 
   updateRecord() {
@@ -88,4 +88,6 @@ export class IndexComponent {
     localStorage.removeItem('loginInfo');
     this.router.navigateByUrl('/');
   }
+
+
 }

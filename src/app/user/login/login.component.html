@@ -8,7 +8,12 @@
     <input type="email" formControlName="email" id="email" required />
     <label for="password">Password</label>
     <input type="password" formControlName="password" id="password" required />
-    <button type="submit">Login</button>
+    <button type="submit">
+      <div class="spinner-border" role="status" *ngIf="loading">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <span *ngIf="!loading">Login</span>
+    </button>
     <a href="" [routerLink]="['/signup']" class="question"
       >don't have an account?</a
     >

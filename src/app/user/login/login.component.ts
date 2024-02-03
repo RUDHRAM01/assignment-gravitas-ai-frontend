@@ -16,7 +16,8 @@ export class LoginComponent {
   title = 'login';
   isError: boolean = false;
   errorMsg: string = '';
-  form!: FormGroup
+  form!: FormGroup;
+  loading: boolean = false;
   constructor(private apiService: ServiceService, private router: Router) {
     if(localStorage.getItem('loginInfo')) {
       this.router.navigateByUrl('/home');
@@ -30,12 +31,15 @@ export class LoginComponent {
     });
   }
   login() {
+    this.loading = true;
     this.apiService.Login(this.form.value).subscribe((data) => {
       localStorage.setItem('loginInfo', data.token);
       this.router.navigateByUrl('/home');
       this.isError = false;
+      this.loading = false;
     }, (error) => {
       this.isError = true;
+      this.loading = false;
       this.errorMsg = error.error.msg;
       setTimeout(() => {
         this.isError = false;

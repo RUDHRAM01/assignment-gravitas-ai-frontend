@@ -48,7 +48,6 @@
       <table class="table" >
         <thead>
           <tr>
-            <th scope="col">Id</th>
             <th scope="col">Title</th>
             <th scope="col">Body</th>
             <th scope="col">Action</th>
@@ -56,10 +55,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let record of records">
-            <th scope="row">{{ record.id }}</th>
             <td>{{ record.title }}</td>
             <td>{{ record.description }}</td>
-            <td>
+            <td style="display: flex;gap: 4px;">
               <button
                 class="btn btn-primary"
                 id="updateModalBtn"

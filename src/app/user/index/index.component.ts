@@ -55,8 +55,10 @@ export class IndexComponent {
 
   create() {
     if (this.form.valid) {
+      this.loading = true;
       this.apiService.createRecord(this.form.value).subscribe((res) => {
         this.records.push(res);
+        this.loading = false;
       });
     }
   }
@@ -75,9 +77,11 @@ export class IndexComponent {
   }
 
   updateRecord() {
+    this.loading = true;
     this.apiService.updateRecord(this.editData.id, this.editForm.value).subscribe((res) => {
       this.apiService.getRecords().subscribe((res) => {
         this.records = res;
+        this.loading = false;
       });
     });
     this.editData = {
@@ -97,6 +101,4 @@ export class IndexComponent {
     localStorage.removeItem('loginInfo');
     this.router.navigateByUrl('/');
   }
-
-
 }

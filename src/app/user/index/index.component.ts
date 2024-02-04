@@ -20,6 +20,9 @@ export class IndexComponent {
   records: Array<any> = [];
   form!: FormGroup;
   editForm!: FormGroup;
+  loading: boolean = false;
+  deleteLoading: boolean = false;
+  deleteId: number = -1;
   editData: any = {
     id: '',
     title: '',
@@ -30,8 +33,10 @@ export class IndexComponent {
     if (!localStorage.getItem('loginInfo')) {
       this.router.navigateByUrl('/');
     } else {
+      this.loading = true;
       this.apiService.getRecords().subscribe((res) => {
         this.records = res;
+        this.loading = false;
       });
     }
   }
@@ -57,9 +62,13 @@ export class IndexComponent {
   }
 
   deleteRecord(id: number) {
+    this.deleteLoading = true;
+    this.deleteId = id;
     this.apiService.deleteRecord(id).subscribe((res) => {
       this.apiService.getRecords().subscribe((res) => {
         this.records = res;
+        this.deleteLoading = false;
+        this.deleteId = -1;
       });
     });
 

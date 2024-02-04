@@ -44,37 +44,56 @@
       </button>
     </div>
     <div>
-      <div style="max-width: 100%;overflow: auto;">
-      <table class="table" >
-        <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Body</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let record of records">
-            <td>{{ record.title }}</td>
-            <td>{{ record.description }}</td>
-            <td style="display: flex;gap: 4px;">
-              <button
-                class="btn btn-primary"
-                id="updateModalBtn"
-                data-bs-toggle="modal"
-                data-bs-target="#updateModal"
-                (click)="setValue(record)"
-              >
-                Edit
-              </button>
-              <button class="btn btn-danger" (click)="deleteRecord(record.id)">
-                Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div style="max-width: 100%; overflow: auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Body</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="position: absolute; left: 50%; top: 50%" *ngIf="loading">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </tr>
+            <tr *ngFor="let record of records">
+              <td>{{ record.title }}</td>
+              <td>{{ record.description }}</td>
+              <td style="display: flex; gap: 4px">
+                <button
+                  class="btn btn-primary actionButton"
+                  id="updateModalBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updateModal"
+                  (click)="setValue(record)"
+                >
+                  Edit
+                </button>
+                <button
+                  class="btn btn-danger actionButton"
+                  (click)="deleteRecord(record.id)"
+                >
+                  <div *ngIf="deleteId == record.id">
+                    <span *ngIf="!deleteLoading">Delete</span>
+                    <div
+                      class="spinner-border"
+                      role="status"
+                      *ngIf="deleteLoading"
+                      style="height: 20px; width: 20px;"
+                    >
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
+                  <span *ngIf="deleteId != record.id">Delete</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div
         class="modal fade"
         id="createNewModal"
@@ -117,7 +136,13 @@
                     required
                   />
                 </div>
-                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Save
+                </button>
               </form>
             </div>
           </div>

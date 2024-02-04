@@ -1,18 +1,18 @@
-.homeComponent{
+.homeComponent {
   display: flex;
   padding: 20px;
   flex-direction: column;
 }
 
-.homeComponent h1{
+.homeComponent h1 {
   margin: 0;
   padding: 10px;
   border-radius: 10px;
   color: white;
-  background: linear-gradient(to right, #30CFD0, #330867);
+  background: linear-gradient(to right, #30cfd0, #330867);
 }
 
-.homeComponent > .nav{
+.homeComponent > .nav {
   display: flex;
   width: 100%;
   align-items: center;
@@ -20,14 +20,14 @@
   padding: 10px 0px;
 }
 
-.avatarImg{
+.avatarImg {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
-.avatar{
+.avatar {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -38,7 +38,7 @@
   flex-wrap: wrap;
 }
 
-.createRecord{
+.createRecord {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -46,17 +46,17 @@
   font-weight: 600;
   padding: 10px 20px;
   border-radius: 10px;
-  background: linear-gradient(to right, #30CFD0, #330867);
+  background: linear-gradient(to right, #30cfd0, #330867);
   cursor: pointer;
 }
 
-.recordComponent{
+.recordComponent {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 20px;
 }
-.createRecord button{
+.createRecord button {
   background-color: white;
   padding: 10px 20px;
   border-radius: 10px;
@@ -64,4 +64,11 @@
   cursor: pointer;
   color: orange;
   font-weight: 600;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
 }
